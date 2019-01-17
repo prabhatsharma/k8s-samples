@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-lb
+  annotations:   
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-west-2:107995894928:certificate/0a4af9df-15e8-41a7-a8f5-4afaf6bd3395
+spec:
+  selector:
+    app: nginx
+  type: LoadBalancer
+  ports:
+  - port: 443
+    targetPort: 80
